@@ -25,7 +25,7 @@ async def main():
             #     "transport": "stdio",
             # },
             "weather_n8n": {
-                "url": "http://localhost:5678/mcp/mcp_weather_server/sse",
+                "url": "http://localhost:5678/mcp/mcp-weather-triger/sse",
                 "transport": "sse",
             }
             # You can add more tools here if needed
