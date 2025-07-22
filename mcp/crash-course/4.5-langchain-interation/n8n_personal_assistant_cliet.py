@@ -11,6 +11,9 @@ nest_asyncio.apply()
 
 url = "http://localhost:5678/webhook/concurrency_testing"
 
+tunnel_url = "https://boss-fw-associate-marks.trycloudflare.com"
+url = f"{tunnel_url}/webhook/concurrency_testing"
+
 
 def make_request():
 
