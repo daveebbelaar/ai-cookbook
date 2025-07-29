@@ -1,3 +1,4 @@
+[نسخهٔ فارسی](README.fa.md)
 # MCP Crash Course for Python Developers
 
 ## Part 1: Introduction & Context

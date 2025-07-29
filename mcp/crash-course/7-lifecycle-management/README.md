@@ -1,3 +1,4 @@
+[نسخهٔ فارسی](README.fa.md)
 # Lifecycle Management in MCP
 
 Lifecycle management is a crucial aspect of the Model Context Protocol (MCP) that helps you control the initialization, operation, and termination of MCP servers and clients. Understanding lifecycle management is essential for building robust MCP applications.

@@ -1,3 +1,4 @@
+[نسخهٔ فارسی](README.fa.md)
 ## Part 3: Simple Server Setup with Python SDK
 
 ### Building Your First MCP Server
