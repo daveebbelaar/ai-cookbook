@@ -1,3 +1,4 @@
+[نسخهٔ فارسی](README.fa.md)
 # MCP Server with Docker
 
 This project demonstrates how to run an MCP (Model Control Protocol) server using Docker. The server provides a simple calculator tool that can be accessed by a client.
