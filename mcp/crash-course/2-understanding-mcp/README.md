@@ -1,3 +1,4 @@
+[نسخهٔ فارسی](README.fa.md)
 ## Part 2: Understanding MCP at a Technical Level
 
 ### MCP Architecture Overview
