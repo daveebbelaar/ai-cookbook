@@ -19,7 +19,7 @@ print(markdown_output)
 # Basic HTML extraction
 # --------------------------------------------------------------
 
-result = converter.convert("https://ds4sd.github.io/docling/")
+result = converter.convert("https://docling-project.github.io/docling/")
 
 document = result.document
 markdown_output = document.export_to_markdown()
@@ -29,7 +29,7 @@ print(markdown_output)
 # Scrape multiple pages using the sitemap
 # --------------------------------------------------------------
 
-sitemap_urls = get_sitemap_urls("https://ds4sd.github.io/docling/")
+sitemap_urls = get_sitemap_urls("https://docling-project.github.io/docling/")
 conv_results_iter = converter.convert_all(sitemap_urls)
 
 docs = []
