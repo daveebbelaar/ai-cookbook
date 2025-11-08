@@ -1,6 +1,6 @@
 # Building Knowledge Extraction Pipeline with Docling
 
-[Docling](https://github.com/DS4SD/docling) is a powerful, flexible open source document processing library that converts various document formats into a unified format. It has advanced document understanding capabilities powered by state-of-the-art AI models for layout analysis and table structure recognition.
+[Docling](https://github.com/docling-project/docling) is a powerful, flexible open source document processing library that converts various document formats into a unified format. It has advanced document understanding capabilities powered by state-of-the-art AI models for layout analysis and table structure recognition.
 
 The whole system runs locally on standard computers and is designed to be extensible - developers can add new models or modify the pipeline for specific needs. It's particularly useful for tasks like enterprise document search, passage retrieval, and knowledge extraction. With its advanced chunking and processing capabilities, it's the perfect tool for providing GenAI applications with knowledge through RAG (Retrieval Augmented Generation) pipelines.
 
@@ -60,7 +60,7 @@ Then open your browser and navigate to `http://localhost:8501` to interact with 
 | USPTO XML | Patent documents |
 | PMC XML | PubMed Central articles |
 
-Check out this [page](https://ds4sd.github.io/docling/supported_formats/) for an up to date list.
+Check out this [page](https://docling-project.github.io/docling/usage/supported_formats/) for an up to date list.
 
 ### Processing Pipeline
 
@@ -79,7 +79,7 @@ Docling leverages two primary specialized AI models for document understanding. 
 
 The second key model is `TableFormer`, a table structure recognition system that can handle complex table layouts including partial borders, empty cells, spanning cells, and hierarchical headers. TableFormer typically processes tables in 2-6 seconds on CPU, making it efficient for practical use. 
 
-For documents requiring text extraction from images, Docling integrates `EasyOCR` as an optional component, which operates at 216 dpi for optimal quality but requires about 30 seconds per page. Both the layout analysis and TableFormer models were developed by IBM Research and are publicly available as pre-trained weights on Hugging Face under "ds4sd/docling-models".
+For documents requiring text extraction from images, Docling integrates `EasyOCR` as an optional component, which operates at 216 dpi for optimal quality but requires about 30 seconds per page. Both the layout analysis and TableFormer models were developed by IBM Research and are publicly available as pre-trained weights on Hugging Face under "docling-project/docling-models".
 
 For more detailed information about these models and their implementation, you can refer to the [technical documentation](https://arxiv.org/pdf/2408.09869).
 
@@ -87,11 +87,11 @@ For more detailed information about these models and their implementation, you c
 
 When you're building a RAG (Retrieval Augmented Generation) application, you need to break down documents into smaller, meaningful pieces that can be easily searched and retrieved. But this isn't as simple as just splitting text every X words or characters.
 
-What makes [Docling's chunking](https://ds4sd.github.io/docling/concepts/chunking/) unique is that it understands the actual structure of your document. It has two main approaches:
+What makes [Docling's chunking](https://docling-project.github.io/docling/concepts/chunking/) unique is that it understands the actual structure of your document. It has two main approaches:
 
-1. The [Hierarchical Chunker](https://ds4sd.github.io/docling/concepts/chunking/#hierarchical-chunker) is like a smart document analyzer - it knows where the natural "joints" of your document are. Instead of blindly cutting text into fixed-size pieces, it recognizes and preserves important elements like sections, paragraphs, tables, and lists. It maintains the relationship between headers and their content, and keeps related items together (like items in a list).
+1. The [Hierarchical Chunker](https://docling-project.github.io/docling/concepts/chunking/#hierarchical-chunker) is like a smart document analyzer - it knows where the natural "joints" of your document are. Instead of blindly cutting text into fixed-size pieces, it recognizes and preserves important elements like sections, paragraphs, tables, and lists. It maintains the relationship between headers and their content, and keeps related items together (like items in a list).
 
-2. The [Hybrid Chunker](https://ds4sd.github.io/docling/concepts/chunking/#hybrid-chunker) takes this a step further. It starts with the hierarchical chunks but then:
+2. The [Hybrid Chunker](https://docling-project.github.io/docling/concepts/chunking/#hybrid-chunker) takes this a step further. It starts with the hierarchical chunks but then:
    - It can split chunks that are too large for your embedding model
    - It can stitch together chunks that are too small
    - It works with your specific tokenizer, so the chunks will fit perfectly with your chosen language model
@@ -110,6 +110,6 @@ This means when your RAG system retrieves chunks, they'll have the proper contex
 
 ## Documentation
 
-For full documentation, visit [documentation site](https://ds4sd.github.io/docling/).
+For full documentation, visit [documentation site](https://docling-project.github.io/docling/).
 
-For example notebooks and more detailed guides, check out [GitHub repository](https://github.com/DS4SD/docling).
+For example notebooks and more detailed guides, check out [GitHub repository](https://github.com/docling-project/docling).
