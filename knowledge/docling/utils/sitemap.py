@@ -56,4 +56,4 @@ def get_sitemap_urls(base_url: str, sitemap_filename: str = "sitemap.xml") -> Li
 
 
 if __name__ == "__main__":
-    print(get_sitemap_urls("https://ds4sd.github.io/docling/"))
+    print(get_sitemap_urls("https://docling-project.github.io/docling/"))
