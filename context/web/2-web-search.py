@@ -52,9 +52,11 @@ response = client.responses.parse(
     tool_choice="auto",
     include=["web_search_call.action.sources"],
     input=query,
-    instructions="You are a policy research assistant for Dutch governmental agencies. You search official government websites to find relevant policy documents, regulations, and official information. For each piece of information in your answer, provide a citation that includes the specific text excerpt and the URL where it came from.",
+    instructions="You are a policy research assistant for Dutch governmental agencies. You search official government websites to find relevant policy documents, regulations, and official information. For each piece of information in your answer, provide a citation that includes the specific text excerpt and the URL where it came from. Make sure to answer in English.",
     text_format=SearchResult,
 )
 
 result = response.output[-1].content[-1].parsed
 print(result.model_dump_json(indent=2))
+
+print(result.answer)
