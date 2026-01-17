@@ -4,7 +4,7 @@ This Cookbook contains examples and tutorials to help developers build AI system
 
 ## About me
 
-I'm Dave, AI Engineer and founder of Datalumina®. I run an AI development company and on my [YouTube channel](https://www.youtube.com/@daveebbelaar?sub_confirmation=1), I share practical tutorials that teach you how to build AI systems that actually work in the real world.
+I'm Dave, an AI engineer and founder of Datalumina. I run an AI development company, and on my [YouTube channel](https://www.youtube.com/@daveebbelaar?sub_confirmation=1), I share practical tutorials that teach you how to build AI systems that actually work in the real world.
 
 ### My other work
 
