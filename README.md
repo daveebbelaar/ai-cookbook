@@ -1,23 +1,17 @@
 # Introduction
 
-This Cookbook contains examples and tutorials to help developers build AI systems, offering copy/paste code snippets that you can easily integrate into your own projects.
+This Cookbook contains examples and tutorials to help developers build AI systems with copy/paste code snippets that you can easily integrate into your own projects.
 
-## About Me
+## About me
 
-Hi! I'm Dave, AI Engineer and founder of Datalumina®. On my [YouTube channel](https://www.youtube.com/@daveebbelaar?sub_confirmation=1), I share practical tutorials that teach developers how to build AI systems that actually work in the real world. Beyond these tutorials, I also help people start successful freelancing careers. Check out the links below to learn more.
+I'm Dave, AI Engineer and founder of Datalumina®. I run an AI development company and on my [YouTube channel](https://www.youtube.com/@daveebbelaar?sub_confirmation=1), I share practical tutorials that teach you how to build AI systems that actually work in the real world.
 
-### Explore More Resources
+### My other work
 
-Continue learning – wherever you are in your AI journey.  
+Beyond this cookbook, I've created a few other resources that might help you depending on where you are in your career.
 
-1. 🧠 **Getting Started with AI & Python**     
-   Dive into foundational content to build your technical base  
-   ▶︎ [Learn Python for AI](https://youtu.be/ygXn5nV5qFc)
+If you're completely new to AI and just getting started with Python, I have a [free five-hour course](https://youtu.be/ygXn5nV5qFc) that covers everything you need to know to build a solid foundation.
 
-2. 🛠️ **Learn production-ready AI engineering**   
-   Learn the full GenAI stack, from basics to deployment  
-   ▶︎ [Join the GenAI Accelerator](https://go.datalumina.com/CkIsMAK)
+If you're already comfortable with the basics and want to go deeper, I run a program where I teach developers [how to build and deploy end-to-end GenAI solutions](https://go.datalumina.com/CkIsMAK) using the same approach we use for our agency clients.
 
-3. 💸 **Launch or grow your freelance AI business**     
-   Discover how to land clients, structure work, and scale  
-   ▶︎ [Find Freelance Projects](https://go.datalumina.com/MVWhVn9)
+And if you're a skilled developer or data professional looking to go independent, I can help you [land your first client](https://go.datalumina.com/MVWhVn9).
