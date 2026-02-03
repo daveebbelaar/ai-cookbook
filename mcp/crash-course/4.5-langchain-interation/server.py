@@ -1,4 +1,4 @@
-import requests 
+import httpx
 import asyncio
 import json
 from mcp.server.fastmcp import FastMCP
@@ -21,48 +21,41 @@ async def get_state_and_qrid(longitude: str, latitude: str) -> str:
 
     USER_AGENT = "weather-app/1.0"
     weather_api_url = "https://api.weather.gov/points/"
+    headers = {
+        "User-Agent": USER_AGENT,
+        "Accept": "application/geo+json"
+    }
 
     try:
-        response = requests.get(
-            f"{weather_api_url}{latitude},{longitude}",
+        async with httpx.AsyncClient() as client:
+            response = await client.get(
+                f"{weather_api_url}{latitude},{longitude}",
+                headers=headers,
+                timeout=10.0
+            )
 
-            headers = {
-            "User-Agent": USER_AGENT,
-            "Accept": "application/geo+json"
-        }
-        )
+            if response.status_code == 200:
+                data = response.json()
+                props = data.get("properties", {})
+                state = props.get("gridId", "Unknown")
+                gridx = props.get("gridX", "Unknown")
+                gridy = props.get("gridY", "Unknown")
+                ret = {
+                    "state": state,
+                    "gridx": gridx,
+                    "gridy": gridy
+                }
 
-        if response.status_code == 200:
-            data = dict(response.json())
-            state = data.get("properties", {}).get("gridId", "Unknown")
-            gridx = data.get("properties", {}).get("gridX", "Unknown")
-            gridy = data.get("properties", {}).get("gridY", "Unknown")
-            ret = {
-                "state": state,
-                "gridx": gridx,
-                "gridy": gridy
-            }
-
-            print(f"Retrieved state: {state}, gridX: {gridx}, gridY: {gridy}")
-
-            return json.dumps(ret)  # <-- FIXED: return as string
-        else:
-            return json.dumps({"error": "Unable to retrieve weather data."})
+                print(f"Retrieved state: {state}, gridX: {gridx}, gridY: {gridy}")
+                return json.dumps(ret)
+            else:
+                return json.dumps({"error": f"Unable to retrieve weather data. Status: {response.status_code}"})
+                
     except Exception as e:
         return json.dumps({"error": str(e)})
 
 
-# NW_latitude = "47.6062"
-# NW_longitude = "-122.3321"
-
-# result = asyncio.run(get_state_and_qrid(NW_longitude, NW_latitude))
-# print(result)
-
 if __name__ == "__main__":
-    runtype = "sse2"  # Change to "sse" for SSE transport
-
-    if runtype == "sse":
-        server.run ("sse")
-    else:
-        server.run(transport="stdio")
+    # Default to SSE for easy testing
+    server.run(transport="sse")
 
