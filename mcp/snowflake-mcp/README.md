@@ -122,9 +122,25 @@ SNOWFLAKE_SCHEMA=PUBLIC
 
 ### 3. Run the Server
 
-**Option A: Using MCP Inspector (for testing)**
+**Option A: Run with MCP Inspector (for testing)**
+
+The Inspector runs **two** processes that work together (1:1): the **client** (web UI you open in the browser) and the **proxy** (bridge between the UI and your MCP server). Each has its own port:
+
+| Port type   | Env var       | Default | Meaning |
+|------------|----------------|---------|--------|
+| **Client** | `CLIENT_PORT`  | 6274    | Web UI — open this in your browser |
+| **Server** | `SERVER_PORT`  | 6277    | Proxy — the UI talks to it; it talks to `server.py` via stdio |
+
+From this directory (`mcp/snowflake-mcp`):
+
 ```bash
-mcp dev server.py
+uv run mcp dev server.py
+```
+
+Then open **http://localhost:6274** (or whatever `CLIENT_PORT` you set). If the default ports are in use, override one or both:
+
+```bash
+CLIENT_PORT=8080 SERVER_PORT=9000 uv run mcp dev server.py
 ```
 
 **Option B: Direct execution**

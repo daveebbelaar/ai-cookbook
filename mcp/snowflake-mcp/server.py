@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 """
 Snowflake MCP Server (stdio transport)
 --------------------------------------
