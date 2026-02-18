@@ -98,6 +98,9 @@ Section Type: {section_type}
 Section Goal: {description}
 Style Guide: {style_guide}
 
+Previously Written Sections:
+{previous_sections}
+
 Return your response in this format:
 
 # Content
@@ -259,3 +262,6 @@ if __name__ == "__main__":
         for edit in result["review"].suggested_edits:
             print(f"Section: {edit.section_name}")
             print(f"Suggested Edit: {edit.suggested_edit}")
+
+
+orchestrator.sections_content
