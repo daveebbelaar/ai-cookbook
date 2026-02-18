@@ -1,28 +1,25 @@
 from typing import Dict, List, Tuple
-
 from tiktoken import get_encoding
 from transformers.tokenization_utils_base import PreTrainedTokenizerBase
 
-
-# Create a wrapper class to make OpenAI's tokenizer compatible with the HybridChunker interface
 class OpenAITokenizerWrapper(PreTrainedTokenizerBase):
-    """Minimal wrapper for OpenAI's tokenizer."""
+    """Minimal wrapper for OpenAI's tokenizer compatible with Docling."""
 
-    def __init__(
-        self, model_name: str = "cl100k_base", max_length: int = 8191, **kwargs
-    ):
-        """Initialize the tokenizer.
-
-        Args:
-            model_name: The name of the OpenAI encoding to use
-            max_length: Maximum sequence length
-        """
+    def __init__(self, model_name: str = "cl100k_base", max_length: int = 8191, **kwargs):
         super().__init__(model_max_length=max_length, **kwargs)
         self.tokenizer = get_encoding(model_name)
-        self._vocab_size = self.tokenizer.max_token_value
+        # tiktoken max_token_value is the largest token id; vocab size is +1
+        self._vocab_size = int(self.tokenizer.max_token_value) + 1
+
+    # ✅ Fix: truthiness / len() must not raise
+    def __len__(self) -> int:
+        return self._vocab_size
+
+    # ✅ Optional but extra-safe: avoid any truthiness edge-cases
+    def __bool__(self) -> bool:
+        return True
 
     def tokenize(self, text: str, **kwargs) -> List[str]:
-        """Main method used by HybridChunker."""
         return [str(t) for t in self.tokenizer.encode(text)]
 
     def _tokenize(self, text: str) -> List[str]:
@@ -35,7 +32,8 @@ class OpenAITokenizerWrapper(PreTrainedTokenizerBase):
         return str(index)
 
     def get_vocab(self) -> Dict[str, int]:
-        return dict(enumerate(range(self.vocab_size)))
+        # token->id mapping; this is a placeholder since tiktoken vocab isn't enumerable this way
+        return {str(i): i for i in range(self._vocab_size)}
 
     @property
     def vocab_size(self) -> int:
@@ -46,5 +44,4 @@ class OpenAITokenizerWrapper(PreTrainedTokenizerBase):
 
     @classmethod
     def from_pretrained(cls, *args, **kwargs):
-        """Class method to match HuggingFace's interface."""
         return cls()
