@@ -48,3 +48,7 @@ class OpenAITokenizerWrapper(PreTrainedTokenizerBase):
     def from_pretrained(cls, *args, **kwargs):
         """Class method to match HuggingFace's interface."""
         return cls()
+
+    def __len__(self) -> int:
+        """Return the size of the vocabulary."""
+        return self.vocab_size
