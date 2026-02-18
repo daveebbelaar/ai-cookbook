@@ -1,0 +1,9 @@
+google_api_python_client==2.165.0
+google_auth_oauthlib==1.2.1
+nest_asyncio==1.6.0
+openai==1.68.2
+protobuf==6.30.1
+pydantic==2.10.6
+speechrecognition==3.14.2
+pyaudio
+python-dotenv
