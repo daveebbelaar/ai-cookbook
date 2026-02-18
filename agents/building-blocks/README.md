@@ -1,3 +1,4 @@
+[نسخهٔ فارسی](README.fa.md)
 # The 7 Foundational Building Blocks of AI Agents
 
 ## What I Learned Building Real AI Applications

@@ -1,3 +1,4 @@
+[نسخهٔ فارسی](README.fa.md)
 # How to Build Long-Term Memory for AI Agents with mem0
 
 ## Quick Start

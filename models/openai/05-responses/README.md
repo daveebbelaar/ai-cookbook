@@ -1,3 +1,4 @@
+[نسخهٔ فارسی](README.fa.md)
 # OpenAI Responses API
 
 ## What we will cover

@@ -1,3 +1,4 @@
+[نسخهٔ فارسی](README.fa.md)
 # OpenAI Integration with MCP
 
 This section demonstrates how to integrate the Model Context Protocol (MCP) with OpenAI's API to create a system where OpenAI can access and use tools provided by your MCP server.

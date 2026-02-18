@@ -1,3 +1,4 @@
+[نسخهٔ فارسی](README.fa.md)
 ## Part 4: Comparing MCP to Traditional Approaches
 
 ### Side-by-Side Comparison
