@@ -1,6 +1,6 @@
 # AI Engineer Roadmap (2026)
 
-This is the roadmap I would personally follow if I wanted to become an AI Engineer and get hired fast in 2026.
+This is [the roadmap I would personally follow](https://youtu.be/O2UmHpNlwUw) if I wanted to become an AI Engineer and get hired fast in 2026.
 
 The focus here is applied AI, which means building and deploying systems that use pre-trained AI models, not training or fine-tuning models from scratch.
 
