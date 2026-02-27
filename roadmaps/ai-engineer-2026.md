@@ -14,7 +14,7 @@ The term [AI Engineer](https://www.latent.space/p/ai-engineer) has evolved. Nowa
 
 > A software engineer who builds production-ready systems using pre-trained AI models and APIs.
 
-They integrate models form companies like OpenAI or Anthropic into real products — chatbots, document processors, assistants, and automation systems. They work on the [right side](https://www.latent.space/p/ai-engineer) of the API layer. On the left side, you’ll find Machine Learning Engineers and Data Scientists who train and optimize models.
+They integrate models from companies like OpenAI or Anthropic into real products — chatbots, document processors, assistants, and automation systems. They work on the [right side](https://www.latent.space/p/ai-engineer) of the API layer. On the left side, you’ll find Machine Learning Engineers and Data Scientists who train and optimize models.
 
 While you can technically do AI engineering in almost any programming language, Python completely dominates the field. Every major LLM SDK, framework, and production stack in AI is built around Python. If you are serious about becoming an AI Engineer, learning Python is a *must* in my opinion.
 
