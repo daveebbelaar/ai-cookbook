@@ -15,32 +15,14 @@
 One model call with the right context: system prompt, few-shot examples, structured output, retrieval. No loops, no tools, no autonomy. This handles more than most people think.
 
 ```mermaid
----
-config:
-  theme: base
-  themeVariables:
-    primaryColor: "#dbeafe"
-    primaryTextColor: "#1e3a5f"
-    primaryBorderColor: "#93c5fd"
-    lineColor: "#94a3b8"
-  flowchart:
-    curve: linear
-    padding: 16
-    nodeSpacing: 50
-    rankSpacing: 70
----
 flowchart LR
-    IN(["Input"]):::input --> LLM["LLM"]:::llm
+    IN(["Input"]) --> LLM["LLM"]
 
-    RAG["Retrieved<br>Context"]:::context -.-> LLM
-    FEW["Few-Shot<br>Examples"]:::context -.-> LLM
-    SYS["System<br>Prompt"]:::context -.-> LLM
+    RAG["Retrieved<br>Context"] -.-> LLM
+    FEW["Few-Shot<br>Examples"] -.-> LLM
+    SYS["System<br>Prompt"] -.-> LLM
 
-    LLM --> OUT(["Structured<br>Output"]):::input
-
-    classDef input fill:#dbeafe,stroke:#60a5fa,color:#1e3a5f,stroke-width:2px
-    classDef llm fill:#f0f9ff,stroke:#93c5fd,color:#1e3a5f,stroke-width:2px
-    classDef context fill:#f1f5f9,stroke:#cbd5e1,color:#475569,stroke-width:1px
+    LLM --> OUT(["Structured<br>Output"])
 ```
 
 ---
@@ -50,36 +32,19 @@ flowchart LR
 Multiple LLM calls orchestrated through fixed paths. Each step validates its output before passing to the next. No model makes decisions about control flow — the code does.
 
 ```mermaid
----
-config:
-  theme: base
-  themeVariables:
-    primaryColor: "#dbeafe"
-    primaryTextColor: "#1e3a5f"
-    primaryBorderColor: "#93c5fd"
-    lineColor: "#94a3b8"
-  flowchart:
-    curve: linear
-    padding: 16
-    nodeSpacing: 50
-    rankSpacing: 70
----
 flowchart LR
-    IN(["Ticket In"]):::input --> CLASSIFY["Classify<br>Intent"]:::process
-    CLASSIFY --> BILLING["Billing<br>Handler"]:::process
-    CLASSIFY --> TECH["Technical<br>Handler"]:::process
-    CLASSIFY --> GEN["General<br>Handler"]:::process
-    BILLING --> VALIDATE{"Can we<br>resolve?"}:::decision
+    IN(["Ticket In"]) --> CLASSIFY["Classify<br>Intent"]
+    CLASSIFY --> BILLING["Billing<br>Handler"]
+    CLASSIFY --> TECH["Technical<br>Handler"]
+    CLASSIFY --> GEN["General<br>Handler"]
+    BILLING --> VALIDATE{"Can we<br>resolve?"}
     TECH --> VALIDATE
     GEN --> VALIDATE
-    VALIDATE --> RESPOND["Generate<br>Response"]:::process
+    VALIDATE --> RESPOND["Generate<br>Response"]
     VALIDATE --> ESCALATE["Escalate to<br>Human"]:::escalate
-    RESPOND --> OUT(["Done"]):::input
+    RESPOND --> OUT(["Done"])
 
-    classDef input fill:#dbeafe,stroke:#60a5fa,color:#1e3a5f,stroke-width:2px
-    classDef process fill:#f0f9ff,stroke:#93c5fd,color:#1e3a5f,stroke-width:1px
-    classDef decision fill:#fef3c7,stroke:#fbbf24,color:#92400e,stroke-width:2px
-    classDef escalate fill:#fee2e2,stroke:#f87171,color:#991b1b,stroke-width:1px
+    classDef escalate fill:#fee2e2,stroke:#f87171,color:#991b1b
 ```
 
 ---
@@ -89,33 +54,17 @@ flowchart LR
 The agent decides which tools to call and in what order, but only within a fixed set of well-defined capabilities. This is where real autonomy starts.
 
 ```mermaid
----
-config:
-  theme: base
-  themeVariables:
-    primaryColor: "#dbeafe"
-    primaryTextColor: "#1e3a5f"
-    primaryBorderColor: "#93c5fd"
-    lineColor: "#94a3b8"
-  flowchart:
-    curve: linear
-    padding: 16
-    nodeSpacing: 50
-    rankSpacing: 70
----
 flowchart TB
-    ROUTE(["Routed to: Billing Agent"]):::input --> AGENT["Billing<br>Agent"]:::agent
+    ROUTE(["Routed to: Billing Agent"]) --> AGENT["Billing<br>Agent"]:::agent
 
-    AGENT <--> DB[("Customer<br>DB")]:::tool
-    AGENT <--> CUSTOMER["Ask<br>Customer"]:::tool
-    AGENT <--> POLICY["Policy<br>Lookup"]:::tool
-    AGENT <--> CALC["Refund<br>Calculator"]:::tool
+    AGENT <--> DB[("Customer<br>DB")]
+    AGENT <--> CUSTOMER["Ask<br>Customer"]
+    AGENT <--> POLICY["Policy<br>Lookup"]
+    AGENT <--> CALC["Refund<br>Calculator"]
 
-    AGENT --> RESULT(["Resolution"]):::input
+    AGENT --> RESULT(["Resolution"])
 
-    classDef input fill:#dbeafe,stroke:#60a5fa,color:#1e3a5f,stroke-width:2px
-    classDef agent fill:#dcfce7,stroke:#4ade80,color:#166534,stroke-width:2px
-    classDef tool fill:#f0f9ff,stroke:#93c5fd,color:#1e3a5f,stroke-width:1px
+    classDef agent fill:#dcfce7,stroke:#4ade80,color:#166534
 ```
 
 ---
@@ -125,52 +74,36 @@ flowchart TB
 Instead of hand-picking tools, you give the agent a full runtime — the same capabilities you see in coding agents like Claude Code or Cursor. Bash execution, file system access, grep and search, web research, external APIs. The agent reasons about what to do, executes, observes, and iterates autonomously.
 
 ```mermaid
----
-config:
-  theme: base
-  themeVariables:
-    primaryColor: "#dbeafe"
-    primaryTextColor: "#1e3a5f"
-    primaryBorderColor: "#93c5fd"
-    lineColor: "#94a3b8"
-  flowchart:
-    curve: linear
-    padding: 16
-    nodeSpacing: 50
-    rankSpacing: 70
----
 flowchart TB
-    ROUTE(["Routed to: Deep Analysis"]):::input --> HARNESS["Agent<br>Harness"]:::harness
+    ROUTE(["Routed to: Deep Analysis"]) --> HARNESS["Agent<br>Harness"]:::harness
 
     subgraph SHELL ["Shell & System"]
         direction LR
-        BASH["Bash"]:::tool
-        READ["Read /<br>Write"]:::tool
-        GREP["Grep /<br>Glob"]:::tool
+        BASH["Bash"]
+        READ["Read /<br>Write"]
+        GREP["Grep /<br>Glob"]
     end
 
     subgraph RESEARCH ["Web & Research"]
         direction LR
-        SEARCH["Web<br>Search"]:::tool
-        FETCH["Web<br>Fetch"]:::tool
+        SEARCH["Web<br>Search"]
+        FETCH["Web<br>Fetch"]
     end
 
     subgraph APIS ["External APIs via MCP"]
         direction LR
-        GATEWAY["Payment<br>Gateway"]:::tool
-        CRM["CRM<br>System"]:::tool
-        TICKETS["Ticketing<br>System"]:::tool
+        GATEWAY["Payment<br>Gateway"]
+        CRM["CRM<br>System"]
+        TICKETS["Ticketing<br>System"]
     end
 
     HARNESS <--> SHELL
     HARNESS <--> RESEARCH
     HARNESS <--> APIS
 
-    HARNESS --> RESULT(["Report + Artifacts"]):::input
+    HARNESS --> RESULT(["Report + Artifacts"])
 
-    classDef input fill:#dbeafe,stroke:#60a5fa,color:#1e3a5f,stroke-width:2px
-    classDef harness fill:#fef3c7,stroke:#f59e0b,color:#92400e,stroke-width:2px
-    classDef tool fill:#f0f9ff,stroke:#93c5fd,color:#1e3a5f,stroke-width:1px
+    classDef harness fill:#fef3c7,stroke:#f59e0b,color:#92400e
 ```
 
 ---
@@ -185,32 +118,17 @@ An orchestrator decomposes the task and delegates to specialized agents, each wi
 Both patterns solve the same problem — parallel domain expertise — but the trade-off is isolation vs. shared context.
 
 ```mermaid
----
-config:
-  theme: base
-  themeVariables:
-    primaryColor: "#dbeafe"
-    primaryTextColor: "#1e3a5f"
-    primaryBorderColor: "#93c5fd"
-    lineColor: "#94a3b8"
-  flowchart:
-    curve: linear
-    padding: 16
-    nodeSpacing: 50
-    rankSpacing: 70
----
 flowchart TB
-    IN(["Complex Request"]):::input --> ORCH["Orchestrator"]:::orch
+    IN(["Complex Request"]) --> ORCH["Orchestrator"]:::orch
 
-    ORCH <-->|"own context<br>window"| W1["Research<br>Agent"]:::agent
-    ORCH <-->|"own context<br>window"| W2["Drafting<br>Agent"]:::agent
-    ORCH <-->|"own context<br>window"| W3["Compliance<br>Agent"]:::agent
+    ORCH <--> W1["Research<br>Agent"]:::agent
+    ORCH <--> W2["Drafting<br>Agent"]:::agent
+    ORCH <--> W3["Compliance<br>Agent"]:::agent
 
-    ORCH --> OUT(["Final Output"]):::input
+    ORCH --> OUT(["Final Output"])
 
-    classDef input fill:#dbeafe,stroke:#60a5fa,color:#1e3a5f,stroke-width:2px
-    classDef orch fill:#ede9fe,stroke:#8b5cf6,color:#5b21b6,stroke-width:2px
-    classDef agent fill:#dcfce7,stroke:#4ade80,color:#166534,stroke-width:1px
+    classDef orch fill:#ede9fe,stroke:#8b5cf6,color:#5b21b6
+    classDef agent fill:#dcfce7,stroke:#4ade80,color:#166534
 ```
 
 ---
@@ -220,39 +138,22 @@ flowchart TB
 The routing decision isn't about severity — it's about what the task *needs*. Each level trades off cost, latency, reliability, and capability differently. Use the simplest level that gets the job done.
 
 ```mermaid
----
-config:
-  theme: base
-  themeVariables:
-    primaryColor: "#dbeafe"
-    primaryTextColor: "#1e3a5f"
-    primaryBorderColor: "#93c5fd"
-    lineColor: "#94a3b8"
-  flowchart:
-    curve: linear
-    padding: 16
-    nodeSpacing: 40
-    rankSpacing: 80
----
 flowchart LR
-    IN(["Customer<br>Request"]):::input --> CLASSIFY["Classify<br>Intent"]:::dag --> ROUTE{"Route"}:::decision
+    IN(["Customer<br>Request"]) --> CLASSIFY["Classify<br>Intent"] --> ROUTE{"Route"}
 
-    ROUTE --> L1["Augmented<br>LLM"]:::dag
+    ROUTE --> L1["Augmented<br>LLM"]
     ROUTE --> L3["Tool-Calling<br>Agent"]:::agent
     ROUTE --> L4["Agent<br>Harness"]:::harness
     ROUTE --> L5["Multi-Agent<br>Orchestrator"]:::orch
 
-    L1 --> OUT(["Response"]):::input
+    L1 --> OUT(["Response"])
     L3 --> OUT
     L4 --> OUT
     L5 --> OUT
 
-    classDef input fill:#dbeafe,stroke:#60a5fa,color:#1e3a5f,stroke-width:2px
-    classDef dag fill:#f0f9ff,stroke:#93c5fd,color:#1e3a5f,stroke-width:1px
-    classDef decision fill:#fef3c7,stroke:#fbbf24,color:#92400e,stroke-width:2px
-    classDef agent fill:#dcfce7,stroke:#4ade80,color:#166534,stroke-width:2px
-    classDef harness fill:#fef3c7,stroke:#f59e0b,color:#92400e,stroke-width:2px
-    classDef orch fill:#ede9fe,stroke:#8b5cf6,color:#5b21b6,stroke-width:2px
+    classDef agent fill:#dcfce7,stroke:#4ade80,color:#166534
+    classDef harness fill:#fef3c7,stroke:#f59e0b,color:#92400e
+    classDef orch fill:#ede9fe,stroke:#8b5cf6,color:#5b21b6
 ```
 
 | | Augmented LLM | Tool-Calling Agent | Agent Harness | Multi-Agent |
@@ -261,4 +162,3 @@ flowchart LR
 | **Latency** | ~1s | ~5s | ~30s+ | ~60s+ |
 | **Reliability** | Deterministic | High | Medium | Lower |
 | **When to use** | Answer is retrievable | Needs a few specific tools | Needs exploration and reasoning | Needs parallel domain expertise |
-
