@@ -1,6 +1,6 @@
 # 5 Levels of AI Agents Complexity
 
-| Level | Pattern | Code | Framework |
+| Level | Pattern | Code |
 |---|---|---|---|
 | 1 | Augmented LLM | [`1-augmented-llm.py`](1-augmented-llm.py)|
 | 2 | Prompt Chains & Routing | [`2-prompt-chains.py`](2-prompt-chains.py)|
