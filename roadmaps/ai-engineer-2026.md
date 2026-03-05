@@ -1,4 +1,4 @@
-# AI Engineer Roadmap (2026)
+# AI Engineer Roadmap (2026) — Enhanced Version
 
 This is [the roadmap I would personally follow](https://youtu.be/O2UmHpNlwUw) if I wanted to become an AI Engineer and get hired fast in 2026.
 
@@ -14,9 +14,11 @@ The term [AI Engineer](https://www.latent.space/p/ai-engineer) has evolved. Nowa
 
 > A software engineer who builds production-ready systems using pre-trained AI models and APIs.
 
-They integrate models form companies like OpenAI or Anthropic into real products — chatbots, document processors, assistants, and automation systems. They work on the [right side](https://www.latent.space/p/ai-engineer) of the API layer. On the left side, you’ll find Machine Learning Engineers and Data Scientists who train and optimize models.
+They integrate models from companies like OpenAI or Anthropic into real products — chatbots, document processors, assistants, and automation systems. They work on the [right side](https://www.latent.space/p/ai-engineer) of the API layer. On the left side, you’ll find Machine Learning Engineers and Data Scientists who train and optimize models.
 
-While you can technically do AI engineering in almost any programming language, Python completely dominates the field. Every major LLM SDK, framework, and production stack in AI is built around Python. If you are serious about becoming an AI Engineer, learning Python is a *must* in my opinion.
+While you can technically do AI engineering in almost any programming language, Python completely dominates the field. Every major LLM SDK, framework, and production stack in AI is built around Python. If you are serious about becoming an AI Engineer, learning Python is a *must*.
+
+---
 
 ## Step 1: Learn the Foundations of AI Engineering
 
@@ -28,11 +30,13 @@ Build your base as a software engineer who can write clean, maintainable Python 
 - Practice version control with Git and GitHub (clone, branch, commit, merge, PR).  
 - Understand project structure in Python (modules, imports, `__init__.py`).  
 - Learn basic testing, debugging, and logging.  
-- Understand how to configure environment variables with `.env` files.
-- Go through the entire [OpenAI API](https://youtu.be/0pGxoubWI6s) documentation and Python SDK. Learn how to authenticate, send requests, handle responses, and work with structured outputs. 
-- Understand the fundamental concepts and techniques around prompt engineering
+- Understand how to configure environment variables with `.env` files.  
+- Go through the entire [OpenAI API](https://youtu.be/0pGxoubWI6s) documentation and Python SDK. Learn how to authenticate, send requests, handle responses, and work with structured outputs.  
+- Understand the fundamental concepts and techniques around prompt engineering.
 
-**Goal**: you can build and run small Python projects locally with clean code and structure.
+**Goal**: You can build and run small Python projects locally with clean code and structure.
+
+---
 
 ## Step 2: Design AI Systems That Actually Work
 
@@ -46,9 +50,11 @@ Understand how to think about and design AI systems before writing code.
   - Chain of Responsibility, Facade, Strategy  
 - Explore agent frameworks like LangChain/LangGraph and [PydanticAI](https://youtu.be/zcYtSckecD8) to understand orchestration patterns.  
 - Re-implement [simplified versions](https://youtu.be/bZzyPscbtI8) of these frameworks in your own projects to learn how they work.  
-- Learn to sketch cognitive architectures which are simple block diagrams showing how data flows through your system.  
+- Learn to sketch cognitive architectures which are simple block diagrams showing how data flows through your system.
 
-**Goal**: you can design an AI system end-to-end and explain each step clearly.
+**Goal**: You can design an AI system end-to-end and explain each step clearly.
+
+---
 
 ## Step 3: Build Production-Ready AI Backends
 
@@ -61,9 +67,11 @@ Turn your local prototypes into scalable backend services.
 - Manage database migrations using Alembic.  
 - Understand event-driven architecture: how jobs, queues, and APIs communicate.  
 - Learn to manage configuration and secrets safely using environment variables.  
-- Understand [MCP servers](https://youtu.be/5xqFjh56AwM) and how they can extend your AI applications.  
+- Understand [MCP servers](https://youtu.be/5xqFjh56AwM) and how they can extend your AI applications.
 
-**Goal**: you can run a small backend locally or in Docker that connects to a database and exposes clean API routes.
+**Goal**: You can run a small backend locally or in Docker that connects to a database and exposes clean API routes.
+
+---
 
 ## Step 4: Connect AI to Your Data with RAG
 
@@ -75,27 +83,61 @@ Teach your AI systems to access and use external information.
 - Build an [ingestion pipeline](https://youtu.be/9lBTS5dM27c) to embed and store documents.  
 - Implement similarity search and [hybrid search](https://youtu.be/TbtBhbLh0cc).  
 - Learn techniques to improve retrieval quality: contextual retrieval, query expansion, self-query, re-ranking.  
-- Understand how to evaluate retrieval performance and identify failure cases.  
+- Understand how to evaluate retrieval performance and identify failure cases.
 
-**Goal**: you can connect your AI system to custom data sources and retrieve relevant context at runtime.
+**Goal**: You can connect your AI system to custom data sources and retrieve relevant context at runtime.
 
-## Step 5: Monitor and Optimize Your AI Systems
+---
 
-Measure quality, cost, and reliability of your AI systems.
+## Step 5: Failure & Adversarial Thinking
+
+Learn how AI systems break and how to make them robust.
+
+- Understand **prompt injection attacks** and mitigation strategies.  
+- Implement **jailbreak resistance** in multi-agent or RAG pipelines.  
+- Handle **tool misuse** and invalid inputs safely.  
+- Detect and prevent **data poisoning** in RAG sources.  
+- Handle **non-deterministic model outputs** effectively.  
+- Implement **retry and fallback strategies** for failed API/model calls.  
+
+**Goal**: You can design AI systems that are safe, resilient, and robust to adversarial or unexpected behavior.
+
+---
+
+## Step 6: Monitor and Evaluate AI Systems
+
+Measure quality, cost, and reliability with a structured methodology.
 
 - Learn observability concepts and tools — start with [Langfuse](https://youtu.be/epnPfe5am3I) for tracing and prompt management.  
 - Capture traces for all LLM calls including inputs, outputs, latencies, and token costs.  
-- Create [evaluations](https://youtu.be/a3SMraZWNNs) to test your system regularly:  
-  - Unit tests for LLM outputs  
-  - Human-annotated datasets  
-  - LLM-as-a-judge comparisons  
-- Learn how to store and version datasets for regression testing.  
-- Implement guardrails for safety and security (prompt injection, PII filtering, output validation).  
+- Implement **LLM evaluation methodology**:  
+  - Golden datasets for regression testing  
+  - Pairwise prompt comparison for optimization  
+  - Offline vs online evaluation for real-world reliability  
+  - Drift detection and version control for datasets  
+  - Confidence scoring and thresholding for outputs  
 - Track application errors and exceptions using tools like Sentry.  
+- Implement guardrails for safety and security (prompt injection, PII filtering, output validation).
 
-**Goal**: you can quantify performance, catch regressions early, and continuously improve your AI applications.
+**Goal**: You can objectively measure LLM system performance and continuously improve reliability, cost-efficiency, and safety.
 
-## Step 6: Ship AI Applications to Production
+---
+
+## Step 7: Business & Product Thinking
+
+Develop product-oriented judgment for AI systems.
+
+- Frame problems clearly: What is the user need and why is AI required?  
+- Make cost vs value decisions for every design choice (latency, token usage, API cost).  
+- Define **latency budgets** and performance targets.  
+- Decide **when deterministic logic is preferable** to LLM usage.  
+- Communicate technical trade-offs to stakeholders and justify design decisions.
+
+**Goal**: You can build AI systems that are technically strong and aligned with real-world product and business requirements.
+
+---
+
+## Step 8: Ship AI Applications to Production
 
 Get your systems online, stable, and maintainable.
 
@@ -106,21 +148,24 @@ Get your systems online, stable, and maintainable.
 - Manage environment variables and secrets securely.  
 - Set up health checks and alerts.  
 - Track performance, cost, and reliability post-deployment.  
-- Understand CI/CD basics using GitHub Actions.  
+- Understand CI/CD basics using GitHub Actions.
 
-**Goal**: you can deploy, monitor, and maintain your AI applications in a production-like environment.
+**Goal**: You can deploy, monitor, and maintain your AI applications in a production-like environment.
+
+---
 
 ## Conclusion
 
 If you follow this roadmap step by step:
 
 - Learn Python properly  
-- Master LLM APIs, prompt engineering, agent patterns
+- Master LLM APIs, prompt engineering, agent patterns  
 - Understand system design and backend architecture  
-- Implement RAG + monitoring  
+- Implement RAG, monitoring, and robust evaluation  
+- Account for failure, adversarial issues, and business/product thinking  
 - Deploy a few real projects end-to-end  
 
-You’ll have everything you need to land your first AI Engineer role in 2026.  
+You’ll have everything you need to land your first AI Engineer role in 2026.
 
 Focus on building, not theorizing. Ship small, iterate fast, document everything, and showcase at least three complete projects that prove you can build and deploy real AI systems.
 
