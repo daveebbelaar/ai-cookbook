@@ -104,6 +104,10 @@ flowchart TB
     HARNESS --> RESULT(["Report + Artifacts"])
 
     classDef harness fill:#fef3c7,stroke:#f59e0b,color:#92400e
+
+    style SHELL fill:#f1f5f9,stroke:#cbd5e1,color:#334155
+    style RESEARCH fill:#f1f5f9,stroke:#cbd5e1,color:#334155
+    style APIS fill:#f1f5f9,stroke:#cbd5e1,color:#334155
 ```
 
 ---
