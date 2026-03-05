@@ -1,7 +1,5 @@
 # The 5 Levels of AI Autonomy
 
-The best production AI systems use the simplest level of autonomy at each step — and only escalate complexity when the task demands it.
-
 | Level | Pattern | Code | Framework |
 |---|---|---|---|
 | 1 | Augmented LLM | [`1-augmented-llm.py`](1-augmented-llm.py) | PydanticAI |
@@ -124,7 +122,7 @@ flowchart TB
 
 ## Level 4: Agent Harness — Full Runtime Access
 
-Instead of hand-picking tools, you give the agent a full runtime — document analysis, web research, API access, dynamic data extraction. The agent reasons about what to do, executes, observes, and iterates.
+Instead of hand-picking tools, you give the agent a full runtime — the same capabilities you see in coding agents like Claude Code or Cursor. Bash execution, file system access, grep and search, web research, external APIs. The agent reasons about what to do, executes, observes, and iterates autonomously.
 
 ```mermaid
 ---
@@ -144,11 +142,29 @@ config:
 flowchart TB
     ROUTE(["Routed to: Deep Analysis"]):::input --> HARNESS["Agent<br>Harness"]:::harness
 
-    HARNESS <--> DOCS["Document<br>Analysis"]:::tool
-    HARNESS <--> WEB["Web<br>Research"]:::tool
-    HARNESS <--> APIS["External<br>APIs"]:::tool
-    HARNESS <--> DATA["Data<br>Extraction"]:::tool
-    HARNESS <--> CHECK["Cross-<br>Reference"]:::tool
+    subgraph SHELL ["Shell & System"]
+        direction LR
+        BASH["Bash"]:::tool
+        READ["Read /<br>Write"]:::tool
+        GREP["Grep /<br>Glob"]:::tool
+    end
+
+    subgraph RESEARCH ["Web & Research"]
+        direction LR
+        SEARCH["Web<br>Search"]:::tool
+        FETCH["Web<br>Fetch"]:::tool
+    end
+
+    subgraph APIS ["External APIs via MCP"]
+        direction LR
+        GATEWAY["Payment<br>Gateway"]:::tool
+        CRM["CRM<br>System"]:::tool
+        TICKETS["Ticketing<br>System"]:::tool
+    end
+
+    HARNESS <--> SHELL
+    HARNESS <--> RESEARCH
+    HARNESS <--> APIS
 
     HARNESS --> RESULT(["Report + Artifacts"]):::input
 
@@ -161,7 +177,12 @@ flowchart TB
 
 ## Level 5: Multi-Agent Orchestration — Delegated Autonomy
 
-An orchestrator decomposes the task and delegates to specialized worker agents, each with their own tools and context. Every worker reports back to the orchestrator — it decides what to delegate next, what to retry, and when to finalize.
+An orchestrator decomposes the task and delegates to specialized agents, each with their own tools, prompts, and (optionally) their own models. How delegation works depends on the architecture you choose:
+
+- **Subagents (this example — Claude Agent SDK):** Each worker spins up in its own context window with its own system prompt and tools. It does its job independently and returns a result to the orchestrator. The orchestrator never sees the worker's internal reasoning — only the final output. This is how tools like Claude Code and Cursor handle it.
+- **Passed-down agents (e.g. PydanticAI, LangGraph):** Instead of isolated subagents, you wire agents together in code — passing outputs from one to the next, sharing dependencies, or nesting agent calls. The control flow is more explicit and the context can be shared.
+
+Both patterns solve the same problem — parallel domain expertise — but the trade-off is isolation vs. shared context.
 
 ```mermaid
 ---
@@ -181,9 +202,9 @@ config:
 flowchart TB
     IN(["Complex Request"]):::input --> ORCH["Orchestrator"]:::orch
 
-    ORCH <--> W1["Research<br>Agent"]:::agent
-    ORCH <--> W2["Drafting<br>Agent"]:::agent
-    ORCH <--> W3["Compliance<br>Agent"]:::agent
+    ORCH <-->|"own context<br>window"| W1["Research<br>Agent"]:::agent
+    ORCH <-->|"own context<br>window"| W2["Drafting<br>Agent"]:::agent
+    ORCH <-->|"own context<br>window"| W3["Compliance<br>Agent"]:::agent
 
     ORCH --> OUT(["Final Output"]):::input
 
