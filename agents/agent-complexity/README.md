@@ -1,7 +1,7 @@
 # 5 Levels of AI Agents Complexity
 
 | Level | Pattern | Code |
-|---|---|---|---|
+|---|---|---|
 | 1 | Augmented LLM | [`1-augmented-llm.py`](1-augmented-llm.py)|
 | 2 | Prompt Chains & Routing | [`2-prompt-chains.py`](2-prompt-chains.py)|
 | 3 | Tool-Calling Agent | [`3-tool-calling-agent.py`](3-tool-calling-agent.py)|
