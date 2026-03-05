@@ -127,7 +127,7 @@ flowchart TB
 
     ORCH --> OUT(["Final Output"])
 
-    classDef orch fill:#dbeafe,stroke:#60a5fa,color:#000
+    classDef orch fill:#dbeafe,stroke:#60a5fa,color:#1e3a5f
     classDef agent fill:#dcfce7,stroke:#4ade80,color:#166534
 ```
 
@@ -153,7 +153,7 @@ flowchart LR
 
     classDef agent fill:#dcfce7,stroke:#4ade80,color:#166534
     classDef harness fill:#fef3c7,stroke:#f59e0b,color:#92400e
-    classDef orch fill:#dbeafe,stroke:#60a5fa,color:#000
+    classDef orch fill:#dbeafe,stroke:#60a5fa,color:#1e3a5f
 ```
 
 | | Augmented LLM | Tool-Calling Agent | Agent Harness | Multi-Agent |
