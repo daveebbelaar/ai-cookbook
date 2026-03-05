@@ -10,7 +10,7 @@
 
 ---
 
-## Level 1: Augmented LLM — Single API Call
+## Level 1: Augmented LLM - Single API Call
 
 One model call with the right context: system prompt, few-shot examples, structured output, retrieval. No loops, no tools, no autonomy. This handles more than most people think.
 
@@ -27,9 +27,9 @@ flowchart LR
 
 ---
 
-## Level 2: Prompt Chains & Routing — Deterministic DAGs
+## Level 2: Prompt Chains & Routing - Deterministic DAGs
 
-Multiple LLM calls orchestrated through fixed paths. Each step validates its output before passing to the next. No model makes decisions about control flow — the code does.
+Multiple LLM calls orchestrated through fixed paths. Each step validates its output before passing to the next. No model makes decisions about control flow - the code does.
 
 ```mermaid
 flowchart LR
@@ -49,7 +49,7 @@ flowchart LR
 
 ---
 
-## Level 3: Tool-Calling Agent — Scoped Autonomy
+## Level 3: Tool-Calling Agent - Scoped Autonomy
 
 The agent decides which tools to call and in what order, but only within a fixed set of well-defined capabilities. This is where real autonomy starts.
 
@@ -69,9 +69,9 @@ flowchart TB
 
 ---
 
-## Level 4: Agent Harness — Full Runtime Access
+## Level 4: Agent Harness - Full Runtime Access
 
-Instead of hand-picking tools, you give the agent a full runtime — the same capabilities you see in coding agents like Claude Code or Cursor. Bash execution, file system access, grep and search, web research, external APIs. The agent reasons about what to do, executes, observes, and iterates autonomously.
+Instead of hand-picking tools, you give the agent a full runtime - the same capabilities you see in coding agents like Claude Code or Cursor. Bash execution, file system access, grep and search, web research, external APIs. The agent reasons about what to do, executes, observes, and iterates autonomously.
 
 ```mermaid
 flowchart TB
@@ -108,14 +108,14 @@ flowchart TB
 
 ---
 
-## Level 5: Multi-Agent Orchestration — Delegated Autonomy
+## Level 5: Multi-Agent Orchestration - Delegated Autonomy
 
 An orchestrator decomposes the task and delegates to specialized agents, each with their own tools, prompts, and (optionally) their own models. How delegation works depends on the architecture you choose:
 
-- **Subagents (this example — Claude Agent SDK):** Each worker spins up in its own context window with its own system prompt and tools. It does its job independently and returns a result to the orchestrator. The orchestrator never sees the worker's internal reasoning — only the final output. This is how tools like Claude Code and Cursor handle it.
-- **Passed-down agents (e.g. PydanticAI, LangGraph):** Instead of isolated subagents, you wire agents together in code — passing outputs from one to the next, sharing dependencies, or nesting agent calls. The control flow is more explicit and the context can be shared.
+- **Subagents (this example - Claude Agent SDK):** Each worker spins up in its own context window with its own system prompt and tools. It does its job independently and returns a result to the orchestrator. The orchestrator never sees the worker's internal reasoning - only the final output. This is how tools like Claude Code and Cursor handle it.
+- **Passed-down agents (e.g. PydanticAI, LangGraph):** Instead of isolated subagents, you wire agents together in code - passing outputs from one to the next, sharing dependencies, or nesting agent calls. The control flow is more explicit and the context can be shared.
 
-Both patterns solve the same problem — parallel domain expertise — but the trade-off is isolation vs. shared context.
+Both patterns solve the same problem - parallel domain expertise - but the trade-off is isolation vs. shared context.
 
 ```mermaid
 flowchart TB
@@ -135,7 +135,7 @@ flowchart TB
 
 ## The Full Picture: All Five Combined
 
-The routing decision isn't about severity — it's about what the task *needs*. Each level trades off cost, latency, reliability, and capability differently. Use the simplest level that gets the job done.
+The routing decision isn't about severity - it's about what the task *needs*. Each level trades off cost, latency, reliability, and capability differently. Use the simplest level that gets the job done.
 
 ```mermaid
 flowchart LR
