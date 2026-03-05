@@ -2,11 +2,11 @@
 
 | Level | Pattern | Code | Framework |
 |---|---|---|---|
-| 1 | Augmented LLM | [`1-augmented-llm.py`](1-augmented-llm.py) | PydanticAI |
-| 2 | Prompt Chains & Routing | [`2-prompt-chains.py`](2-prompt-chains.py) | PydanticAI |
-| 3 | Tool-Calling Agent | [`3-tool-calling-agent.py`](3-tool-calling-agent.py) | PydanticAI |
-| 4 | Agent Harness | [`4-agent-harness.py`](4-agent-harness.py) | Claude Agent SDK |
-| 5 | Multi-Agent Orchestration | [`5-multi-agent.py`](5-multi-agent.py) | Claude Agent SDK |
+| 1 | Augmented LLM | [`1-augmented-llm.py`](1-augmented-llm.py)|
+| 2 | Prompt Chains & Routing | [`2-prompt-chains.py`](2-prompt-chains.py)|
+| 3 | Tool-Calling Agent | [`3-tool-calling-agent.py`](3-tool-calling-agent.py)|
+| 4 | Agent Harness | [`4-agent-harness.py`](4-agent-harness.py) |
+| 5 | Multi-Agent Orchestration | [`5-multi-agent.py`](5-multi-agent.py) |
 
 ---
 
