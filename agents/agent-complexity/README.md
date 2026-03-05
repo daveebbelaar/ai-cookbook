@@ -1,4 +1,4 @@
-# The 5 Levels of AI Autonomy
+# 5 Levels of AI Agents Complexity
 
 | Level | Pattern | Code | Framework |
 |---|---|---|---|
