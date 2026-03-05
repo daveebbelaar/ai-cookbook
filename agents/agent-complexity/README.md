@@ -15,7 +15,7 @@
 One model call with the right context: system prompt, few-shot examples, structured output, retrieval. No loops, no tools, no autonomy. This handles more than most people think.
 
 ```mermaid
-%%{init: {'theme': 'default'}}%%
+%%{init: {'theme': 'default', 'themeVariables': {'background': 'transparent'}}}%%
 flowchart LR
     IN(["Input"]) --> LLM["LLM"]
 
@@ -33,7 +33,7 @@ flowchart LR
 Multiple LLM calls orchestrated through fixed paths. Each step validates its output before passing to the next. No model makes decisions about control flow - the code does.
 
 ```mermaid
-%%{init: {'theme': 'default'}}%%
+%%{init: {'theme': 'default', 'themeVariables': {'background': 'transparent'}}}%%
 flowchart LR
     IN(["Ticket In"]) --> CLASSIFY["Classify<br>Intent"]
     CLASSIFY --> BILLING["Billing<br>Handler"]
@@ -56,7 +56,7 @@ flowchart LR
 The agent decides which tools to call and in what order, but only within a fixed set of well-defined capabilities. This is where real autonomy starts.
 
 ```mermaid
-%%{init: {'theme': 'default'}}%%
+%%{init: {'theme': 'default', 'themeVariables': {'background': 'transparent'}}}%%
 flowchart TB
     ROUTE(["Routed to: Billing Agent"]) --> AGENT["Billing<br>Agent"]:::agent
 
@@ -77,7 +77,7 @@ flowchart TB
 Instead of hand-picking tools, you give the agent a full runtime - the same capabilities you see in coding agents like Claude Code or Cursor. Bash execution, file system access, grep and search, web research, external APIs. The agent reasons about what to do, executes, observes, and iterates autonomously.
 
 ```mermaid
-%%{init: {'theme': 'default'}}%%
+%%{init: {'theme': 'default', 'themeVariables': {'background': 'transparent'}}}%%
 flowchart TB
     ROUTE(["Routed to: Deep Analysis"]) --> HARNESS["Agent<br>Harness"]:::harness
 
@@ -126,7 +126,7 @@ An orchestrator decomposes the task and delegates to specialized agents, each wi
 Both patterns solve the same problem - parallel domain expertise - but the trade-off is isolation vs. shared context.
 
 ```mermaid
-%%{init: {'theme': 'default'}}%%
+%%{init: {'theme': 'default', 'themeVariables': {'background': 'transparent'}}}%%
 flowchart TB
     IN(["Complex Request"]) --> ORCH["Orchestrator"]:::orch
 
@@ -147,7 +147,7 @@ flowchart TB
 The routing decision isn't about severity - it's about what the task *needs*. Each level trades off cost, latency, reliability, and capability differently. Use the simplest level that gets the job done.
 
 ```mermaid
-%%{init: {'theme': 'default'}}%%
+%%{init: {'theme': 'default', 'themeVariables': {'background': 'transparent'}}}%%
 flowchart LR
     IN(["Customer<br>Request"]) --> CLASSIFY["Classify<br>Intent"] --> ROUTE{"Route"}
 
