@@ -17,11 +17,11 @@ client = MemoryClient(api_key=os.getenv("MEM0_API_KEY"))
 messages = [
     {
         "role": "user",
-        "content": "Hi, I'm Dave. I like to build AI automations!.",
+        "content": "Hi, I'm Aamir. I like to build AI automations!.",
     },
     {
         "role": "assistant",
-        "content": "Hello Dave! I've noted that you like to build AI automations!. I'll keep this in mind for any AI automation related recommendations or discussions.",
+        "content": "Hello Aamir! I've noted that you like to build AI automations!. I'll keep this in mind for any AI automation related recommendations or discussions.",
     },
 ]
 
@@ -37,4 +37,4 @@ query = "What shall we build today?"
 # Search for related memories
 # --------------------------------------------------------------
 
-response = client.search(query, user_id="default_user")
+response = client.search(query, filters={"user_id": "default_user"})
