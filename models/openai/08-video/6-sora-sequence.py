@@ -41,7 +41,7 @@ with tempfile.NamedTemporaryFile(mode="w", suffix=".txt", delete=False) as f:
 output_file = sequence_path / "sequence.mp4"
 
 try:
-    subprocess.run(
+    result = subprocess.run(
         [
             "ffmpeg",
             "-f",
@@ -50,13 +50,22 @@ try:
             "0",
             "-i",
             temp_path,
-            "-c",
-            "copy",
+            "-c:v",
+            "libx264",
+            "-c:a",
+            "aac",
             str(output_file),
             "-y",
         ],
-        check=True,
+        check=False,
+        capture_output=True,
+        text=True,
     )
+    if result.returncode != 0:
+        print("ffmpeg failed:")
+        print(result.stderr)
+        raise subprocess.CalledProcessError(result.returncode, result.args)
     print(f"Done: {output_file}")
 finally:
-    os.unlink(temp_path)
+    if os.path.exists(temp_path):
+        os.unlink(temp_path)
