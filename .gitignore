@@ -112,3 +112,6 @@ qdrant_data/
 # Claude Code
 .claude/
 CLAUDE.md
+
+# Generated artifacts from API responses (e.g. Sora video frames)
+models/openai/08-video/references/
