@@ -32,7 +32,7 @@ from utils.reranker import rerank_with_cohere
 
 RERANK_SAMPLE_SIZE = 50
 SEED = 42
-
+RERANK_SAMPLE_SIZE = 10
 
 # --------------------------------------------------------------
 # Step 1: NDCG@k in pure numpy
