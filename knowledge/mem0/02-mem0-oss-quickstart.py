@@ -39,12 +39,15 @@ result = m.add(
 # Get all memories
 # --------------------------------------------------------------
 
-all_memories = m.get_all(user_id="default_user")
+all_memories = m.get_all(filters={"user_id": "default_user"})
 
 # --------------------------------------------------------------
 # Search for related memories
 # --------------------------------------------------------------
 
-related_memories = m.search(query="What do you know about me?", user_id="default_user")
+related_memories = m.search(
+    query="What do you know about me?",
+    filters={"user_id": "default_user"},
+)
 
 print(related_memories)

@@ -158,10 +158,10 @@ Memories can be retrieved in three ways:
 memory.get(memory_id)
 
 # Search semantically
-memory.search(query="What do you know about me?", user_id="user123")
+memory.search(query="What do you know about me?", filters={"user_id": "user123"})
 
 # Get all memories
-memory.get_all(user_id="user123")
+memory.get_all(filters={"user_id": "user123"})
 ```
 
 ## Key Takeaways

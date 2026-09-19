@@ -80,7 +80,7 @@ class EmailProcessor:
         # Search Mem0 for relevant emails
         results = self.client.search(
             query=query,
-            user_id=user_id,
+            filters={"user_id": user_id},
             categories=["email"],
             output_format="v1.1",
             version="v2",

@@ -37,4 +37,4 @@ query = "What shall we build today?"
 # Search for related memories
 # --------------------------------------------------------------
 
-response = client.search(query, user_id="default_user")
+response = client.search(query, filters={"user_id": "default_user"})
