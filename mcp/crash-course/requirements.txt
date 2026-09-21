@@ -1,5 +1,6 @@
-mcp[cli]==1.10.1
+mcp[cli]==1.30.0
 openai==1.75.0
 python-dotenv
 ipykernel
 httpx
+nest-asyncio==1.6.0

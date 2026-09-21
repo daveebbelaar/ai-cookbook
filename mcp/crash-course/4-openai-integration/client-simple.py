@@ -1,5 +1,7 @@
 import asyncio
 import json
+import sys
+from pathlib import Path
 from contextlib import AsyncExitStack
 from typing import Any, Dict, List
 
@@ -10,10 +12,13 @@ from mcp.client.stdio import stdio_client
 from openai import AsyncOpenAI
 
 # Apply nest_asyncio to allow nested event loops (needed for Jupyter/IPython)
+# Interactive cells have no __file__; open them from this lesson folder.
+SCRIPT_DIR = Path(__file__).resolve().parent if "__file__" in globals() else Path.cwd()
+
 nest_asyncio.apply()
 
 # Load environment variables
-load_dotenv("../.env")
+load_dotenv(SCRIPT_DIR.parent / ".env")
 
 # Global variables to store session state
 session = None
@@ -34,8 +39,8 @@ async def connect_to_server(server_script_path: str = "server.py"):
 
     # Server configuration
     server_params = StdioServerParameters(
-        command="python",
-        args=[server_script_path],
+        command=sys.executable,
+        args=[str(SCRIPT_DIR / server_script_path)],
     )
 
     # Connect to the server
@@ -142,21 +147,25 @@ async def process_query(query: str) -> str:
 async def cleanup():
     """Clean up resources."""
     global exit_stack
-    await exit_stack.aclose()
+    try:
+        await exit_stack.aclose()
+    finally:
+        await openai_client.close()
 
 
 async def main():
     """Main entry point for the client."""
-    await connect_to_server("server.py")
+    try:
+        await connect_to_server("server.py")
 
-    # Example: Ask about company vacation policy
-    query = "What is our company's vacation policy?"
-    print(f"\nQuery: {query}")
+        # Example: Ask about company vacation policy
+        query = "What is our company's vacation policy?"
+        print(f"\nQuery: {query}")
 
-    response = await process_query(query)
-    print(f"\nResponse: {response}")
-
-    await cleanup()
+        response = await process_query(query)
+        print(f"\nResponse: {response}")
+    finally:
+        await cleanup()
 
 
 if __name__ == "__main__":

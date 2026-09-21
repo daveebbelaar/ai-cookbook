@@ -14,11 +14,11 @@ This example shows how to:
 
 This example uses the **stdio transport** for communication between the client and server, which means:
 
-- The client and server run in the same process
+- The client and server run in separate processes
 - The client directly launches the server as a subprocess
-- No separate server process is needed
+- You do not need to start the server manually
 
-If you want to split your client and server into separate applications (e.g., running the server on a different machine), you'll need to use the **SSE (Server-Sent Events) transport** instead. For details on setting up an SSE connection, see the [Simple Server Setup](../3-simple-server-setup) section.
+If you want to split your client and server into separate applications (e.g., running the server on a different machine), use **Streamable HTTP** for a new HTTP integration (the original SSE example is also retained). For details on setting up an SSE connection, see the [Simple Server Setup](../3-simple-server-setup) section.
 
 ### Data Flow Explanation
 

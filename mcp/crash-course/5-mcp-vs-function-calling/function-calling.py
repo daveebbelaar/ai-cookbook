@@ -1,10 +1,14 @@
 import json
+from pathlib import Path
 
 import openai
 from dotenv import load_dotenv
 from tools import add
 
-load_dotenv("../.env")
+# Interactive cells have no __file__; open them from this lesson folder.
+SCRIPT_DIR = Path(__file__).resolve().parent if "__file__" in globals() else Path.cwd()
+
+load_dotenv(SCRIPT_DIR.parent / ".env")
 
 """
 This is a simple example to demonstrate that MCP simply enables a new way to call functions.
