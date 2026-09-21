@@ -15,7 +15,7 @@ client = TypeSafeClient(model=model)
 # Step 1: Define the ticket and ordered levels
 # --------------------------------------------------------------
 
-ticket = "I was charged twice. This is frustrating. Can you please fix it?"
+ticket = "I was charged twice. This is frustrating. Can you please fix it."
 question = Score(
     instructions="How frustrated is the customer in this support ticket?",
     criteria=[
