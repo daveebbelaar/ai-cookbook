@@ -1,13 +1,16 @@
 from mcp.server.fastmcp import FastMCP
-from dotenv import load_dotenv
-
-load_dotenv("../.env")
+from mcp.server.transport_security import TransportSecuritySettings
 
 # Create an MCP server
 mcp = FastMCP(
     name="Calculator",
-    host="0.0.0.0",  # only used for SSE transport
-    port=8050,  # only used for SSE transport (set this to any port)
+    host="0.0.0.0",  # Required inside Docker; publish only to loopback
+    port=8050,
+    transport_security=TransportSecuritySettings(
+        enable_dns_rebinding_protection=True,
+        allowed_hosts=["localhost:8050", "127.0.0.1:8050"],
+        allowed_origins=["http://localhost:8050", "http://127.0.0.1:8050"],
+    ),
 )
 
 

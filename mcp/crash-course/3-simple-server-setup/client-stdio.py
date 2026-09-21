@@ -1,7 +1,12 @@
 import asyncio
+import sys
+from pathlib import Path
 import nest_asyncio
 from mcp import ClientSession, StdioServerParameters
 from mcp.client.stdio import stdio_client
+
+# Interactive cells have no __file__; open them from this lesson folder.
+SCRIPT_DIR = Path(__file__).resolve().parent if "__file__" in globals() else Path.cwd()
 
 nest_asyncio.apply()  # Needed to run interactive python
 
@@ -9,8 +14,8 @@ nest_asyncio.apply()  # Needed to run interactive python
 async def main():
     # Define server parameters
     server_params = StdioServerParameters(
-        command="python",  # The command to run your server
-        args=["server.py"],  # Arguments to the command
+        command=sys.executable,  # Use the same environment as the client
+        args=[str(SCRIPT_DIR / "server.py")],
     )
 
     # Connect to the server

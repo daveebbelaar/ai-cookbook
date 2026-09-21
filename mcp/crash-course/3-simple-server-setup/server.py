@@ -1,13 +1,11 @@
 from mcp.server.fastmcp import FastMCP
-from dotenv import load_dotenv
-
-load_dotenv("../.env")
+import sys
 
 # Create an MCP server
 mcp = FastMCP(
     name="Calculator",
-    host="0.0.0.0",  # only used for SSE transport (localhost)
-    port=8050,  # only used for SSE transport (set this to any port)
+    host="127.0.0.1",  # HTTP transports stay local
+    port=8050,  # used for SSE and Streamable HTTP
     stateless_http=True,
 )
 
@@ -21,9 +19,9 @@ def add(a: int, b: int) -> int:
 
 # Run the server
 if __name__ == "__main__":
-    transport = "stdio"
+    transport = sys.argv[1] if len(sys.argv) > 1 else "stdio"
     if transport == "stdio":
-        print("Running server with stdio transport")
+        print("Running server with stdio transport", file=sys.stderr)
         mcp.run(transport="stdio")
     elif transport == "sse":
         print("Running server with SSE transport")

@@ -1,6 +1,6 @@
 # MCP Server with Docker
 
-This project demonstrates how to run an MCP (Model Control Protocol) server using Docker. The server provides a simple calculator tool that can be accessed by a client.
+This project demonstrates how to run an MCP (Model Context Protocol) server using Docker. The server provides a simple calculator tool that can be accessed by a client.
 
 ## Prerequisites
 
@@ -25,16 +25,17 @@ docker build -t mcp-server .
 ### Step 2: Run the Docker container
 
 ```bash
-docker run -p 8050:8050 mcp-server
+docker run --rm -p 127.0.0.1:8050:8050 mcp-server
 ```
 
-This will start the MCP server inside a Docker container and expose it on port 8050.
+This starts the MCP server inside Docker and publishes port 8050 only on your machine. Run these Docker commands from `mcp/crash-course/6-run-with-docker`.
 
 ## Running the Client
 
 Once the server is running, you can run the client in a separate terminal:
 
 ```bash
+# Activate the course environment and install ../requirements.txt first
 python client.py
 ```
 
@@ -52,7 +53,7 @@ If you encounter connection issues:
 
 4. **Host binding**: The server is configured to bind to `0.0.0.0` instead of `127.0.0.1` to make it accessible from outside the container. If you're still having issues, you might need to check your firewall settings.
 
-5. **Network issues**: If you're running Docker on a remote machine, make sure the port is accessible from your client machine.
+5. **Host/Origin errors**: The server explicitly allows `localhost:8050` and `127.0.0.1:8050`, even though it binds to all interfaces inside Docker. Do not disable DNS rebinding protection to fix a rejected request. This unauthenticated example is intended for local use.
 
 ## Notes
 
